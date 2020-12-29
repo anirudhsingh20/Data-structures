@@ -1,9 +1,17 @@
 // Program to reverse an Array
-
-
 import java.util.Scanner;
 
 class ReverseArray {
+    public static int[] reverse(int[] arr, int start , int end){
+        while(start < end){
+            
+             arr[start] = arr[start] + arr[end];
+             arr[end] = arr[start] -arr[end];
+             arr[start] = arr[start] - arr[end];
+             end--; start++;
+        }
+        return arr;
+    }
     public static void main(String args[]) {
 
         Scanner sc = new Scanner(System.in);
@@ -13,23 +21,32 @@ class ReverseArray {
 
         int[] array = new int[length];
 
-        System.out.println("Enter the integer values in the array: ");
+        System.out.println("\nEnter the integer values in the array: ");
 
         for(int i=0; i<array.length; i++) {
             array[i] = sc.nextInt();
         }
 
-        int[] result = new int[array.length];
-
-        for(int i=0, j=array.length - 1; i<array.length; i++, j-- ) {
-            result[j] = array[i];
-        }
+        reverse(array, 0, array.length - 1);
 
         System.out.println("\nReversed array is : ");
-
-        for(int e : result){
+        for(int e : array){
             System.out.println(e);
         }
+        /* 
+            OTHER METHORD FOR REVERSING OF AN ARRAY 
+        */
+
+        // int[] result = new int[array.length];
+        // for(int i=0, j=array.length - 1; i<array.length; i++, j-- ) {
+        //     result[j] = array[i];
+        // }
+
+        // System.out.println("\nReversed array is : ");
+
+        // for(int e : result){
+        //     System.out.println(e);
+        // }
         sc.close();
     }
 }
