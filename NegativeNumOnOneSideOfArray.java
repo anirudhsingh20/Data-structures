@@ -9,12 +9,9 @@ public class NegativeNumOnOneSideOfArray {
         int i=0, j=0, n = array.length;
 
         // j will be the index position of positive element that we have to swap with a negative element.
-
-
         while(i < n-1 && j < n ) {
 
             if(array[i]>=0){
-
                 if(array[i+1] <0){
                     //swap
                     array[j] = array[j] +array[i+1];
@@ -25,7 +22,6 @@ public class NegativeNumOnOneSideOfArray {
                 else {
                     i++;
                 }
-
             }
             else {
                 i++;
