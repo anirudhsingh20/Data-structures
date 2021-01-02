@@ -1,3 +1,4 @@
+package arrays;
 public class MinMaxOfArray {
     public static void main(String Args[]) {
 

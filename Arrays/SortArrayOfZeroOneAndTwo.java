@@ -1,6 +1,7 @@
 // Sort array on 1, 2 and 3 without using any sorting algorithm.
 
 // also can be sloved using Dutch National Flag Algorithm OR 3-way Partitioning but this approach is better.
+package arrays;
 
 public class SortArrayOfZeroOneAndTwo {
 

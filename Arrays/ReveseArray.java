@@ -1,4 +1,5 @@
 // Program to reverse an Array
+package arrays;
 import java.util.Scanner;
 
 class ReverseArray {
