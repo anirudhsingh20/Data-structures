@@ -1,3 +1,5 @@
+// Program to find the maximum sum of contigous sub array (for all negative numbers)
+
 // This works for both positive and negative numbers 
 
 package arrays;
