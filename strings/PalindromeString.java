@@ -16,14 +16,24 @@ public class PalindromeString {
         char[] s = S.toCharArray();
         
         int left = 0, right = s.length-1;
-        while(left < right) {
-            char temp = s[left];
-            s[left++] = s[right];
-            s[right--] = temp;
-        }
-        String str = new String(s);
+
+        while (left < right) 
+        { 
+            if (s[left++] != s[right--]) 
+            { 
+                return 0; 
+            } 
+        } 
+        return 1;
+
+        // while(left < right) {
+        //     char temp = s[left];
+        //     s[left++] = s[right];
+        //     s[right--] = temp;
+        // }
+        // String str = new String(s);
         
-        return S.equals(str) ? 1: 0;
+        // return S.equals(str) ? 1: 0;
     }
     
     public static void main(String args[]) {
