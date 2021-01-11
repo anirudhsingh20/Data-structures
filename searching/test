@@ -1,0 +1,44 @@
+import java.util.Arrays;
+class Solution {
+    public int maxDistance(int[] position, int m) {
+        
+        Arrays.sort(position);
+        int low = position[0];
+        int high= position[position.length -1] - position[0];
+        
+        int ans = 0;
+        
+        while(low <= high) {
+            
+            int mid = low + (high -low)/2;
+
+            if(check(position,mid,m,position.length)){
+                ans = mid;
+                low = mid+1;
+            }
+            else{
+                high = mid-1;
+            }
+        }
+        return ans;
+        
+    }
+    
+    public static boolean check(int arr[],int gap, int m, int n){
+
+        int prev_position = arr[0];
+        int balls_count = 1;
+        
+        for(int i = 1; i< n ;i++) {
+
+            if((arr[i]-prev_position) >= gap){
+                
+                if(++balls_count == m)
+                    return true;
+                
+                prev_position = arr[i];
+            }
+        }
+        return false;
+    }
+}
