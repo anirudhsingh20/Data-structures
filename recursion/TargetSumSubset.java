@@ -1,7 +1,5 @@
 package recursion;
 
-import java.util.ArrayList;
-
 public class TargetSumSubset {
     
  public static void main(String[] args) {
