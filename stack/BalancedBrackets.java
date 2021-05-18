@@ -17,7 +17,7 @@ public class BalancedBrackets {
         for (int i = 0; i < str.length(); i++) {
 
             if (str.charAt(i) == ')' || str.charAt(i) == ']' || str.charAt(i) == '}') {
-                char last_bracket = findCorrespondingLastBracket(str.charAt(i))
+                char last_bracket = findCorrespondingLastBracket(str.charAt(i));
 
                 while (st.size() > 0 && st.peek() != last_bracket) {
                     st.pop();
