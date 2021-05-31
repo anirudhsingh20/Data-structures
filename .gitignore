@@ -23,6 +23,5 @@
 hs_err_pid*
 
 /hashcode
-*.vscode
-.vscode/settings.json
+**/.vscode/
 practice
