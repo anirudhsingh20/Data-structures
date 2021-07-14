@@ -1,7 +1,18 @@
 package LinkedList;
+// Question
+//
+// *  You are given a partially written LinkedList class.
+// *  You are required to complete the body of fold function. 
+//    The function is expected to place last element after 1st element, 
+//    2nd last element after 2nd element and so on. For more insight check the example
+//
+// input:      1 2 3 4 5
+// output:     1 5 2 4 3
 
-public class OddEvenList {
+// input:      1 2 3 4 5 6
+// output:     1 6 2 5 3 4
 
+public class FoldALinkedList {
     public static class Node {
         int data;
         Node next;
@@ -150,45 +161,55 @@ public class OddEvenList {
             }
         }
 
-        void removeDuplicates() {
-            LinkedList result = new LinkedList();
-            while (this.size > 0) {
-                int val = this.getFirst();
-                this.removeFirst();
+        /////////////////////////////////////
+        ///////////// main code /////////////
+        ////////////////////////////////////
 
-                if (result.size == 0 || result.tail.data != val) {
-                    result.addLast(val);
-                }
+        private void foldHelper(Node node, int floor){
+            if(node == null)
+                return;
+
+            foldHelper(node.next, floor + 1); // recursion
+
+            if(floor > size / 2){
+                //folding logic
+                Node temp = fLeft.next;
+                node.next = fLeft.next;
+                fLeft.next = node;
+                fLeft = temp;
+
             }
-            this.head = result.head;
-            this.tail = result.tail;
-            this.size = result.size;
-        } 
+            else if(floor == size / 2){
+                tail = node;
+                node.next = null;
+            }
+
+        }
+
+        Node fLeft;
+        void fold(){
+            fLeft = head;
+            foldHelper(head,0);
+        }
+
     }
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
-        ll.addLast(65);
-        ll.addLast(65);
-        ll.addLast(65);
-        ll.addLast(55);
-        ll.addLast(45);
-        ll.addLast(45);
-        ll.addLast(35);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(15);
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
         ll.addLast(5);
+        ll.addLast(6);
 
-        System.out.println("List with duplicates:");
+        System.out.println("List:");
+        ll.display();
+        ll.fold();
+
+        System.out.println("List after fold:");
         ll.display();
 
-        ll.removeDuplicates();
-
-        ll.display();
     }
 }

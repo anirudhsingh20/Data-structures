@@ -1,6 +1,6 @@
 package LinkedList;
 
-public class OddEvenList {
+public class DisplayReverseRecursive {
 
     public static class Node {
         int data;
@@ -149,46 +149,52 @@ public class OddEvenList {
                 size--;
             }
         }
+        void displayReverseLinkedList(Node head){
 
-        void removeDuplicates() {
-            LinkedList result = new LinkedList();
-            while (this.size > 0) {
-                int val = this.getFirst();
-                this.removeFirst();
-
-                if (result.size == 0 || result.tail.data != val) {
-                    result.addLast(val);
-                }
+            if(head == null){
+                return;
             }
-            this.head = result.head;
-            this.tail = result.tail;
-            this.size = result.size;
-        } 
+
+            Node temp = head;
+
+            LinkedList l = new LinkedList();
+            while(temp.next != null){
+                l.addLast(temp.data);
+                temp = temp.next;
+            }
+
+            System.out.print(temp.data + " ");
+
+            displayReverseLinkedList(l.head);
+
+
+        }
     }
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
-        ll.addLast(65);
-        ll.addLast(65);
-        ll.addLast(65);
-        ll.addLast(55);
-        ll.addLast(45);
-        ll.addLast(45);
-        ll.addLast(35);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(15);
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
         ll.addLast(5);
-
-        System.out.println("List with duplicates:");
+        ll.addLast(6);
+        ll.addLast(7);
+        ll.addLast(8);
+        ll.addLast(9);
+        ll.addLast(10);
+        ll.addLast(11);
+        ll.addLast(12);
+        ll.addLast(13);
+        ll.addLast(14);
+        System.out.println("List:");
         ll.display();
+        
+        System.out.println();
 
-        ll.removeDuplicates();
+        ll.displayReverseLinkedList(ll.head);
 
-        ll.display();
+        // ll.display();
     }
 }

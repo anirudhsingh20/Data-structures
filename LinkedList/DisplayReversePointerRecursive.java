@@ -1,6 +1,6 @@
 package LinkedList;
 
-public class OddEvenList {
+public class DisplayReversePointerRecursive {
 
     public static class Node {
         int data;
@@ -150,44 +150,57 @@ public class OddEvenList {
             }
         }
 
-        void removeDuplicates() {
-            LinkedList result = new LinkedList();
-            while (this.size > 0) {
-                int val = this.getFirst();
-                this.removeFirst();
+        void reverseHelper(Node node) {
 
-                if (result.size == 0 || result.tail.data != val) {
-                    result.addLast(val);
-                }
+            if (node == null) {
+                return;
             }
-            this.head = result.head;
-            this.tail = result.tail;
-            this.size = result.size;
-        } 
+
+            reverseHelper(node.next);
+
+            if(node == tail){
+                //nothing to do here
+            }
+            else{
+                node.next.next = node;   // node ka jo next hai uska next current node ko point karega (simple logic)
+            }
+
+        }
+
+        void reverseLinkedList(){
+            reverseHelper(head);
+            head.next = null; //////important
+            Node temp = head;
+            head = tail;
+            tail = temp;
+        }
+
     }
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
-        ll.addLast(65);
-        ll.addLast(65);
-        ll.addLast(65);
-        ll.addLast(55);
-        ll.addLast(45);
-        ll.addLast(45);
-        ll.addLast(35);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(15);
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
         ll.addLast(5);
+        ll.addLast(6);
+        ll.addLast(7);
+        ll.addLast(8);
+        ll.addLast(9);
+        ll.addLast(10);
+        ll.addLast(11);
+        ll.addLast(12);
+        ll.addLast(13);
+        ll.addLast(14);
 
-        System.out.println("List with duplicates:");
+        System.out.println("List:");
         ll.display();
 
-        ll.removeDuplicates();
+        System.out.println();
+
+        ll.reverseLinkedList();
 
         ll.display();
     }

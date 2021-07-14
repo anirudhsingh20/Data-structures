@@ -1,7 +1,6 @@
 package LinkedList;
 
-public class OddEvenList {
-
+public class IsLinkedListAPalindrome {
     public static class Node {
         int data;
         Node next;
@@ -150,45 +149,70 @@ public class OddEvenList {
             }
         }
 
-        void removeDuplicates() {
-            LinkedList result = new LinkedList();
-            while (this.size > 0) {
-                int val = this.getFirst();
-                this.removeFirst();
+        private boolean isPalindromeHelper(Node node, int floor) {
 
-                if (result.size == 0 || result.tail.data != val) {
-                    result.addLast(val);
-                }
+            if (node == null) {
+                return true;
             }
-            this.head = result.head;
-            this.tail = result.tail;
-            this.size = result.size;
-        } 
+
+            boolean res = isPalindromeHelper(node.next, floor + 1);
+
+            if (res == false) {
+                return false;
+            } else if (node.data != rleft.data) {
+                return false;
+            } else {
+                rleft = rleft.next;
+                return true;
+            }
+            
+            /////////////////////////////////////////////////////////////////////////
+            //// Optimised code check for same elemets till middle element only /////
+            /////////////////////////////////////////////////////////////////////////
+
+            // // if (floor >= size / 2) { // only check till middle element
+            // //     if (res == false) {
+            // //         return false;
+            // //     } else if (node.data != rleft.data) {
+            // //         return false;
+            // //     } else {
+            // //         rleft = rleft.next;
+            // //         return true;
+            // //     }
+            // // }
+            // // else {
+            // //     return res;
+            // // }
+        }
+
+        Node rleft;
+
+        boolean isPalindrome() {
+            rleft = head;
+            return isPalindromeHelper(head, 0);
+
+        }
+
     }
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
-        ll.addLast(65);
-        ll.addLast(65);
-        ll.addLast(65);
-        ll.addLast(55);
-        ll.addLast(45);
-        ll.addLast(45);
-        ll.addLast(35);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(25);
-        ll.addLast(15);
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
         ll.addLast(5);
+        // ll.addLast(5);
+        ll.addLast(4);
+        ll.addLast(3);
+        ll.addLast(2);
+        ll.addLast(1);
 
-        System.out.println("List with duplicates:");
+        System.out.println("List:");
+
         ll.display();
 
-        ll.removeDuplicates();
-
-        ll.display();
+        System.out.println(ll.isPalindrome()? "Palindrome" : "Not a Palindrome");
     }
 }
