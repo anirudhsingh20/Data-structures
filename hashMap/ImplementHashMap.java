@@ -15,9 +15,9 @@ class ImplementHashMap {
         HashMap() {
             initBuckets(4); // size of buckets / linked list
             size = 0;
-
         }
 
+        @SuppressWarnings("unchecked") // to avoid warnings in code editor
         private void initBuckets(int N) {
             buckets = new LinkedList[N];
 
@@ -143,6 +143,24 @@ class ImplementHashMap {
 
             return -1;
         }
+
+        // to print object
+        public String toString() {
+            String str = "";
+            str += "{";
+            int i = 0;
+            for (K key : keySet()) {
+                str += key + "=";
+                str += get(key);
+                if (i < size() - 1) {
+                    str += ", ";
+                }
+                i++;
+            }
+            str += "}";
+
+            return str;
+        }
     }
 
     public static void main(String[] args) {
@@ -153,7 +171,7 @@ class ImplementHashMap {
         hm.put("US", 130);
         hm.put("India", 110);
         hm.put("China", 140);
-
+        System.out.println(hm);
         System.out.println(hm.size());
         System.out.println(hm.get("India"));
         System.out.println(hm.get("US"));
