@@ -3,7 +3,8 @@ package graph;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GraphImplementation {
+public class IsGraphConnected {
+
     static class Edge {
         int src;
         int neighbour; // destination
@@ -16,11 +17,35 @@ public class GraphImplementation {
         }
     }
 
+    static void getAllConnectedComponents(ArrayList<Edge>[] graph, int src, boolean[] isVisited,
+            ArrayList<Integer> comp) {
+
+        isVisited[src] = true;
+        comp.add(src);
+
+        for (Edge e : graph[src]) {
+            if (!isVisited[e.neighbour]) {
+                getAllConnectedComponents(graph, e.neighbour, isVisited, comp);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        // INPUT:
-        // 7 (vertices)
-        // 8 (edges)
+        // INPUT no. 1:
+        // 7
+        // 5
+        // 0 1 10
+        // 2 3 10
+        // 4 5 10
+        // 5 6 10
+        // 4 6 10
+
+        // OUTPUT: false
+
+        // INPUT no .:
+        // 7
+        // 8
         // 0 1 10
         // 1 2 10
         // 2 3 10
@@ -29,6 +54,8 @@ public class GraphImplementation {
         // 4 5 10
         // 5 6 10
         // 4 6 10
+
+        // OUTPUT: true
 
         Scanner sc = new Scanner(System.in);
         int vertices = Integer.parseInt(sc.nextLine());
@@ -48,6 +75,18 @@ public class GraphImplementation {
             graph[v1].add(new Edge(v1, v2, wt));
             graph[v2].add(new Edge(v2, v1, wt));
         }
+        boolean[] isVisited = new boolean[vertices];
+        ArrayList<ArrayList<Integer>> comps = new ArrayList<>();
+
+        for (int i = 0; i < vertices; i++) {
+            if (!isVisited[i]) {
+                ArrayList<Integer> comp = new ArrayList<>();
+                getAllConnectedComponents(graph, i, isVisited, comp);
+                comps.add(comp);
+            }
+        }
+
+        System.out.println(comps.size() == 1);
         sc.close();
     }
 }
