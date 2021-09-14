@@ -104,8 +104,11 @@ public class IsBinarySearchTree {
     // }
     public static void main(String[] args) {
         // true case
-        Integer[] arr = { 50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null,
-                null };
+        Integer[] arr = { 5,1,null,null,4,3,null,null,6,null,null};
+
+        // Integer[] arr = { 50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null,
+        //     null };
+
 
         // // false case
         // Integer[] arr = { 50, 25, 12, null, null, 37, 30, null, null, 40,null,null, 75, 62, 60,null,null, 76, null, null, 87, null,
