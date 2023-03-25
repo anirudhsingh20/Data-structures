@@ -2,7 +2,7 @@
 
 // This works for both positive and negative numbers 
 
-package arrays;
+package Arrays;
 
 public class MaxContigousSumOfSubArrayWithAllNegativeNumbers {
     

@@ -1,4 +1,4 @@
-package arrays;
+package Arrays;
 
 public class FactorialOfSmallNumber {
     public static int fact(int n) {

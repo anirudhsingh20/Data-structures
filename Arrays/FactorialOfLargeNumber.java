@@ -4,7 +4,7 @@
 
 // store result in res[] in right to left toooo.
 
-package arrays;
+package Arrays;
 
 public class FactorialOfLargeNumber {
 

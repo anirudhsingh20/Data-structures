@@ -27,7 +27,7 @@ Input: nums = [7,7,7,7]
 Output: [0,0,0,0]
 */
 
-package arrays;
+package Arrays;
 
 public class SmallerThanCurrentNumber {
     

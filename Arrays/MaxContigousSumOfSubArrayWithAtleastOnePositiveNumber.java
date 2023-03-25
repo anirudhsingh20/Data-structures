@@ -1,6 +1,6 @@
 // Program to find the maximum sum of contigous sub array (for atleast one positive number)
 
-package arrays;
+package Arrays;
 
 // Kadane's algorithm
 public class MaxContigousSumOfSubArrayWithAtleastOnePositiveNumber {
