@@ -27,4 +27,7 @@ This algo is not suitable for larger data set as it avg and worst cast time comp
       for (int i : arr) {
          System.out.println(i);
       }
-   }
+
+}
+
+<img src="./images/bubble.jpg" width="500"/>
