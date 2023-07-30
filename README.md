@@ -218,4 +218,8 @@ public static void stable_selection_sort(int arr[]) {
 | Bubble sort is relatively slower.                                       | Selection sort is faster as compared to bubble sort.                                                                     |
 
 
+**Important points**
+1. recrusion (toh)
+2. ch - 48 = int
+
 
